@@ -1,0 +1,172 @@
+
+hacer una sintesis por grupo 
+	-caratula
+	-reseña del autor
+ 	-año de publicacion 
+	-poner todos los personajes 
+	-uniformiza el texto en mano(PDF o fisico) 
+c++ general
+C:\SFML-2.5.1\include
+vinculador
+c:\SFML-2.5.1\lib
+input
+sfml-graphics.lib;sfml-window.lib;sfml-system.lib;
+
+#include <SFML/Graphics.hpp>
+
+int main(){
+	sf::RenderWindow app(sf::VideoMode(800, 600, 32), "Hello World - SFML");
+	while (app.isOpen()){
+		sf::Event event;
+		while (app.pollEvent(event)){
+			if (event.type == sf::Event::Closed)
+				app.close();
+		}
+		app.clear(sf::Color(0, 0, 255));
+		app.display();
+	}
+
+	return 0;
+}
+
+
+antropologia 
+------------
+que piensan de la i¿nteligencia artificial 
+una entrada de block
+dos caras evaluar 
+redacion 
+critica 
+desarrolo del tem 
+opinion critica
+
+enviarlo hasta and¿te de la clase 
+juevas 
+analogo hacer un ensayo 
+un aopinios sustyentada en argumentos 
+
+
+void print(nodo<T>*root,int indent){
+	if(root!=nullptr){
+		if(root->hijo[1])print(root->hijo[1],indent+4);
+			if(indent){
+				for(int i=0; i<indent; i++)cout<<" ";
+			}
+		if(root->hijo[1]){
+			cout<<"/"<<endl;
+			for(int i=0; i<indent; i++) cout<<" ";
+		}
+	cout<<root->valor<<endl;
+	if(root->hijo[0]){
+		for(int i =0; i<indent; i++)cout<<" ";
+			cout<<"\\"<<endl;
+			print(root->hijo[0],indent+4);
+		}
+	}
+}
+
+algoritmos
+
+recorrido 
+-profundidad (preorden,inorden,portorden)
+-amplitud (niveles)
+-avl
+-arbol de prioridades
+-
+ 
+ para crecer y disminuir la pantalla 
+
+ #include <cwchar>
+#include <windows.h>
+#include<iostream>
+using namespace std;
+
+void tam(int x){
+    CONSOLE_FONT_INFOEX cfi;
+    cfi.cbSize = sizeof(cfi);
+    cfi.nFont = 0;
+    cfi.dwFontSize.X = 0;                   //Width of each character in the font
+    cfi.dwFontSize.Y = x;                  //Height
+    cfi.FontFamily = FF_DONTCARE;
+    cfi.FontWeight = FW_NORMAL;
+    std::wcscpy(cfi.FaceName, L"Consolas"); //Choose your font
+    SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+    std::cout << "Font: Consolas, Size: 24\n";
+}
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	int color, tipo;
+	char *colores[8]={"NEGRO", "ROJO", "VERDE", "AMARILLO", "AZUL", "MAGENTA", "CYAN", "BLANCO"};
+	
+for(tipo=0; tipo<=1; tipo++)
+	for(color=30; color<=37; color++)
+		printf("\033[%d;%dm%s%s \\033\[%d;%dm\n", tipo, color, colores[(color-30)], tipo?" (negrita)":"", tipo, color);
+
+printf("\033[0m\nRESET \\033\[0m\n\n");
+
+return 0;
+}
+
+
+
+void mostrar(nodo<T> *a,int x,int y){
+	if(a!=NULL){
+		gotoxy(x,y);
+		cout<<a->valor<<endl;
+		x = x-2;
+		y = y+2;
+		mostrar(a->hijo[0],x,y-1);
+		x = x+4;
+		mostrar(a->hijo[1],x,y-1);
+		y = y-2;
+	}
+}
+
+
+void print(nodo<T>*root,int indent){
+	if(root!=nullptr){
+		if(root->hijo[1])print(root->hijo[1],indent+4);
+			if(indent){
+				for(int i=0; i<indent; i++)cout<<" ";
+			}
+		if(root->hijo[1]){
+			cout<<"/"<<endl;
+			for(int i=0; i<indent; i++) cout<<" ";
+		}
+	cout<<root->valor<<endl;
+	if(root->hijo[0]){
+		for(int i =0; i<indent; i++)cout<<" ";
+			cout<<"\\"<<endl;
+			print(root->hijo[0],indent+4);
+		}
+	}
+}
+
+	int sizeTree(nodo<T> *node) const {
+		    return (node == nullptr)? 0 : sizeTree(node->hijo[0]) + sizeTree(node->hijo[1]) + 1;
+	}
+
+	void printTree(nodo<T> *root, int factorHeight=1){
+	    std::queue<nodo<T>*> queueNode;
+	    int ceilSize=log2(sizeTree(root)+1);
+	    queueNode.push(root);
+	    int pot=0;
+	    while(queueNode.size() > 0){
+	      int levels = queueNode.size();
+		      while(levels > 0){
+		        nodo<T>*nodeAux = queueNode.front(); 
+		        queueNode.pop();
+		        cout <<setw( (levels==pow(2,pot))?pow(2, (ceilSize-pot+factorHeight)):pow(2, (ceilSize-pot+factorHeight+1)));
+		        cout<< nodeAux->valor;
+		        if(nodeAux->hijo[0] != NULL) queueNode.push(nodeAux->hijo[0]);
+		        if(nodeAux->hijo[1] != NULL) queueNode.push(nodeAux->hijo[1]);
+		        levels--;
+		      }
+		      pot++;
+		      cout << endl;
+	    }
+  	}
+	
